@@ -1,0 +1,59 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>NEUROSLITHER ARENA</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+</style>
+</head>
+<body>
+  <canvas id="game" width="1280" height="720"></canvas>
+  <canvas id="minimap" width="200" height="200"></canvas>
+
+  <!-- HUD -->
+  <div class="hud">
+    <div class="logo">
+      <svg width="280" height="80" viewBox="0 0 280 80" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <path d="M30 40 Q70 10 110 40 Q150 70 190 40 Q230 10 260 40" stroke="#00ffcc" stroke-width="14" stroke-linecap="round" fill="none" filter="url(#glow)"/>
+        <circle cx="255" cy="40" r="18" fill="#ff00ff" filter="url(#glow)"/>
+        <text x="35" y="68" font-family="Orbitron" font-size="28" fill="#00ffcc" filter="url(#glow)">NEUROSLITHER</text>
+      </svg>
+    </div>
+    <div id="stats" class="glass">ДЛИНА: <span id="len">12</span> | УРОВЕНЬ: <span id="lvl">1</span></div>
+  </div>
+
+  <!-- Leaderboard -->
+  <div id="leaderboard" class="glass-panel"></div>
+
+  <!-- Dev floating button -->
+  <button id="dev-btn" class="neon-btn">⚡</button>
+
+  <!-- Dev menu -->
+  <div id="dev-menu" class="glass-panel dev-menu hidden">
+    <h2>NEURO CORE</h2>
+    <label>Скорость <input type="range" id="spd" min="0.5" max="3" step="0.1" value="1"></label>
+    <label>Рост <input type="range" id="grow" min="1" max="8" value="2"></label>
+    <label><input type="checkbox" id="ai" checked> AI БОТЫ</label>
+    <label><input type="checkbox" id="particles" checked> ЧАСТИЦЫ</label>
+    <button id="spawn20">СПАВН 20 СФЕР</button>
+    <button id="addbot">+ БОТ</button>
+    <label><input type="checkbox" id="debug"> DEBUG HITBOX</label>
+    <div id="fps">FPS: <span>60</span></div>
+  </div>
+
+  <!-- Screens -->
+  <div id="start" class="overlay"><button id="play" class="neon-play">НАЧАТЬ ПУЛЬС</button></div>
+  <div id="over" class="overlay hidden"><h1>ПОГЛОЩЁН</h1><p>Финальная длина: <span id="final">42</span></p><button id="restart">ВОЗРОДИТЬСЯ</button></div>
+
+<script src="script.js"></script>
+</body>
+</html>
